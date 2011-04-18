@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_donation_pi_form&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="currency">Currency:</label>
+			<label index="amount">Amount:</label>
+			<label index="name">Name:</label>
+			<label index="company">Company:</label>
+			<label index="addressStreet">Street:</label>
+			<label index="addressCity">City:</label>
+			<label index="addressZip">Zip:</label>
+			<label index="addressState">State:</label>
+			<label index="addressCountry">Country:</label>
+			<label index="email">Email:</label>
+			<label index="url">URL:</label>
+			<label index="comment">Comment:</label>
+			<label index="submit.paypal">Donate using PayPal</label>
+			<label index="submit.bankwire">Donate using Bank Wire</label>
+			<label index="legend.donation">Donation</label>
+			<label index="legend.contactDetails">Contact Details</label>
+			<label index="bankwire.instructions">Please make your donation to the bank account below. A donation record has been created and will be activated as soon as your payment is registered on the bank account.</label>
+		</languageKey>
+	</data>
+</T3locallang>

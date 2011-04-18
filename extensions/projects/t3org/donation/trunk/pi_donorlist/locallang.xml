@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_donation_pi_donorlist&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="time_ago">@time ago</label>
+			<label index="time_year">1 year|@count years</label>
+			<label index="time_month">1 month|@count months</label>
+			<label index="time_week">1 week|@count weeks</label>
+			<label index="time_day">1 day|@count days</label>
+			<label index="time_hour">1 hour|@count hours</label>
+			<label index="time_minute">1 min|@count min</label>
+			<label index="time_second">1 sec|@count sec</label>
+		</languageKey>
+	</data>
+</T3locallang>

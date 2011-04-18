@@ -1,0 +1,35 @@
+
+
+plugin.tx_donation_pi_form {
+
+	templateFile = EXT:donation/resources/form/template_form.htm
+	cssFile = EXT:donation/resources/form/style_form.css
+
+	loadJsFramework = 1
+	useJsFrameworkFromContrib = 0
+
+	paypalUrl = https://www.paypal.com/cgi-bin/webscr
+	thanksPid = 0
+
+	storagePid = 0
+
+	notificationSenderEmail = john.doe@example.com
+
+	paypalDonation {
+		itemName = TYPO3 One-Time Donation
+	}
+
+	paypalSubscription {
+		itemName = TYPO3 Recuring Donations
+	}
+}
+
+
+plugin.tx_donation_pi_donorlist {
+
+	templateFile = EXT:donation/resources/donorlist/template_donorlist.htm
+	cssFile = EXT:donation/resources/donorlist/style_donorlist.css
+
+	recordsPerPage = 25
+
+}
