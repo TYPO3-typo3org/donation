@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the donation donor list plugin of the 'donation' extension</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pi_donorlist_title">Donor List</label>
+			<label index="pi_donorlist_flexform.sheet_startingpoint">Startingpoint</label>
+		</languageKey>
+	</data>
+</T3locallang>

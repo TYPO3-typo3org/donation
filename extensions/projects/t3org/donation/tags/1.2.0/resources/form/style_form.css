@@ -1,0 +1,188 @@
+
+
+.tx-donation-pi-form ul#bucket-selector {
+	list-style-type: none;
+	margin: 0px;
+}
+
+.tx-donation-pi-form ul#bucket-selector li {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: bottom;
+	background: none;
+	width: 45%;
+}
+
+
+.tx-donation-pi-form #bucket-selector .tab {
+	border-left: 2px solid #ff8700;
+	background-color: #ff9f33;
+	height: 27px;
+	border-bottom: 3px solid #ff8700;
+	color: #fff;
+	padding: 11px 9px 9px 9px;
+	line-height: 1.1em;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.tx-donation-pi-form #bucket-selector .account-id,
+.tx-donation-pi-form #bucket-selector .account-email-paypal {
+	display: none;
+}
+
+
+.tx-donation-pi-form #bucket-selector .tab:hover {
+	background-color: #ffaf55;
+}
+
+.tx-donation-pi-form #bucket-selector .tab.active {
+	padding-top: 21px;
+	background-color: #ffaf55;
+	margin-top: 0px;
+}
+
+.tx-donation-pi-form #bucket-selector .tab.active .btn-up-down {
+	background:  url(images/btn_up_down.png) no-repeat -29px 0;
+}
+
+#bucket-selector .tab img {
+	float: left;
+}
+
+#bucket-selector .tab .description {
+	font-size: 12px;
+	margin-left: 11px;
+	float: left;
+}
+
+#bucket-selector .tab .btn-up-down {
+	width: 21px;
+	height: 21px;
+	margin-top: 3px;
+	background:  url(images/btn_up_down.png) no-repeat 0 0;
+	float: right;
+}
+
+/* ----- ----- buckets ----- ----- */
+
+#bucket-container {
+	border-top: 1px solid #ff8700;
+	padding: 0;
+	float: left;
+	width: 100%;
+	height: 215px;
+}
+
+#buckets {
+	padding: 0px 5px;
+	position: relative;
+	background-color: #efefef; zoom: 1; position: relative;
+	border-bottom: 4px solid #ff8700;
+}
+
+.donate-bucket {
+	margin: 26px 17px 24px 0;
+	padding: 0;
+	height: 160px;
+	width: 230px;
+	background: #ff9f33 url(images/donate-bucket-bg.png) repeat-x 0 0;
+	float: left;
+}
+
+.donate-bucket p {
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-size: 11px;
+}
+
+.donate-bucket p.donate-type {
+	font-weight: bold;
+	padding: 3px 18px 5px;
+}
+
+.donate-bucket p.donate-text {
+	padding: 8px 18px 5px 18px;
+	line-height: 1.2em;
+	font-size: 10px;
+}
+
+.donate-bucket .donate-amount {
+	margin: 5px 0 0;
+	padding: 0;
+}
+
+.donate-bucket .donate-amount {
+	float: left;
+}
+
+.donate-bucket input.txt_inp {
+	margin: 0 5px 0 56px;
+	padding: 5px 2px 0;
+	width: 49px;
+	height: 24px;
+	border: none;
+	background: transparent url(images/donate-input.png) no-repeat;
+	color: #000;
+	font: 11px/1em bold Tahoma, Verdana, Arial;
+	text-align: center;
+}
+
+.donate-bucket input.sbmt_inp {
+	background: transparent url(images/donate-submit.png) no-repeat 0px 1px;
+	border: none;
+	color: #fff;
+	font-weight: bold;
+	height: 26px;
+	width: 67px;
+}
+
+.donate-bucket.paypal .bucket-header {
+	height: 31px;
+	background: #ff9f33 url(images/donate-pp.png) no-repeat;
+}
+
+.donate-bucket.bwire {
+	margin-right: 0px;
+}
+
+.donate-bucket.bwire .bucket-header {
+	height: 31px;
+	background: #ff9f33 url(images/donate-bw.png) no-repeat;
+}
+
+
+/* ----- ----- bankwire form ----- ----- */
+
+.tx-donation-pi-form fieldset {
+	border: none;
+	margin-bottom: 15px;
+	padding-top: 5px;
+}
+
+.tx-donation-pi-form legend {
+	padding-left: 15px;
+	font-weight: bold;
+}
+
+.tx-donation-pi-form fieldset.submit {
+	border: none;
+	padding-left: 15px;
+}
+
+.tx-donation-pi-form ol {
+	list-style: none;
+}
+
+#main-column .tx-donation-pi-form ol li {
+	margin: 0;
+}
+
+.tx-donation-pi-form label {
+	display: block;
+}
+
+
+
