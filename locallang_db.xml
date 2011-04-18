@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'donation'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_donation_donation">Donation</label>
+			<label index="tx_donation_donation.status">Status</label>
+			<label index="tx_donation_donation.name">Name</label>
+			<label index="tx_donation_donation.company">Company</label>
+			<label index="tx_donation_donation.address">Address</label>
+			<label index="tx_donation_donation.address_street">Street</label>
+			<label index="tx_donation_donation.address_zip">ZIP</label>
+			<label index="tx_donation_donation.address_city">City</label>
+			<label index="tx_donation_donation.address_state">State</label>
+			<label index="tx_donation_donation.address_country">Country</label>
+			<label index="tx_donation_donation.address_country_code">Country Code</label>
+			<label index="tx_donation_donation.email">E-Mail</label>
+			<label index="tx_donation_donation.amount">Amount</label>
+			<label index="tx_donation_donation.fee">Fee</label>
+			<label index="tx_donation_donation.currency">Currency</label>
+			<label index="tx_donation_donation.feuser">Frontend User</label>
+			<label index="tx_donation_donation.url">URL</label>
+			<label index="tx_donation_donation.comment">Comment</label>
+			<label index="tx_donation_donation.paypal_txn_id">Paypal Transaction ID</label>
+			<label index="tx_donation_donation.account">Account</label>
+			<label index="tx_donation_account">Donation Account</label>
+			<label index="tx_donation_account.name">Name</label>
+			<label index="tx_donation_account.image">Image</label>
+			<label index="tx_donation_account.bank_account">Bank Account</label>
+			<label index="tx_donation_account.email_notification">Notification E-Mail (separate multiple emails with comma)</label>
+			<label index="tx_donation_account.email_paypal">Paypal E-Mail</label>
+			<label index="tt_content.list_type_pi_form">Donations - Form</label>
+			<label index="tt_content.list_type_pi_donorlist">Donations - Donors List</label>
+		</languageKey>
+	</data>
+</T3locallang>

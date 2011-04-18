@@ -1,0 +1,36 @@
+2009-05-08 Ingo Renner  <ingo@typo3.org>
+
+	* added a field to hold the fees from paypal
+	* increased version number to 1.1.0
+	* separated address fields
+	* increased version number to 1.2.0
+
+2009-04-28 Ingo Renner  <ingo@typo3.org>
+
+	* added more data to notification email
+	* fixed XCLASS definition in classes/viewHelpers/class.tx_donation_TimeagoViewHelper.php
+
+2009-04-02 Ingo Renner  <ingo@typo3.org>
+
+	* fixed a bug with donation > 1000 EUR/$ coming through bankwire
+
+2009-02-01 Ingo Renner  <ingo@typo3.org>
+
+	* now sending all parameters coming from Paypal through utf8_encode (only did that with the name so far)
+	* added a check whether the amount of a donation is greater than 0 before saving it
+
+2009-01-15 Ingo Renner  <ingo@typo3.org>
+
+	* fixed an issue with utf-8 encoding of parameters in the Log IPN Command
+
+2009-01-14 Ingo Renner  <ingo@typo3.org>
+
+	* fixed a bug in the Log IPN Command: tried to include t3lib_cs.php, but it should have been class.t3lib_cs.php instead
+
+2008-12-23 Ingo Renner  <ingo@typo3.org>
+
+	* added configuration for notification sender email
+
+2008-07-04 Ingo Renner  <ingo@typo3.org>
+
+	* initial code generated with kickstarter

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Template for the donor list plugin</title>
+</head>
+<body>
+
+<!-- ###DONOR_LIST### begin -->
+
+<table class="contenttable contenttable-0">
+	<thead>
+		<tr>
+			<!-- ###LOOP:HEADER_COLUMNS### begin -->
+			<!-- ###LOOP_CONTENT### -->
+			<th scope="col" class="col-###HEADER_COLUMN.FIELD###">###HEADER_COLUMN.TITLE###</th>
+			<!-- ###LOOP_CONTENT### -->
+			<!-- ###LOOP:HEADER_COLUMNS### end -->
+		</tr>
+	</thead>
+	<tbody>
+	<!-- ###LOOP:ROWS### begin -->
+	<!-- ###LOOP_CONTENT### -->
+		<tr>
+			<td>###ROW.NAME######WRAP:###ROW.COMPANY###| (|)### ###LINK:###ROW.URL###|&#x2192;###</td>
+			<td>###MONEY:###ROW.AMOUNT###|###ROW.CURRENCY######</td>
+			<td>###TIMEAGO:###ROW.CRDATE######</td>
+		</tr>
+	<!-- ###LOOP_CONTENT### -->
+	<!-- ###LOOP:ROWS### end -->
+	</tbody>
+</table>
+
+###PAGEBROWSER###
+
+<!-- ###DONOR_LIST### end -->
+
+</body>
+</html>

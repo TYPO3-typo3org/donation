@@ -1,0 +1,53 @@
+
+/* table */
+
+.tx-donation-pi-donorlist .contenttable {
+	width: 100%;
+}
+
+.tx-donation-pi-donorlist .contenttable thead th {
+	text-align: left;
+	padding: 2px 0px 1px 3px;
+}
+
+/* thead */
+
+.tx-donation-pi-donorlist .contenttable thead a {
+	color: #fff;
+}
+
+.tx-donation-pi-donorlist .contenttable thead th.col-amount {
+	width: 80px;
+}
+
+.tx-donation-pi-donorlist .contenttable thead th.col-crdate {
+	width: 160px;
+}
+
+/* tbody */
+
+.tx-donation-pi-donorlist .contenttable tbody td {
+	border-bottom: 1px solid #ccc;
+	empty-cells: show;
+}
+
+
+/* page browser */
+
+#main-column .tx-donation-pi-donorlist .tx-pagebrowse-pi1 .tx-pagebrowse {
+	text-align: left;
+	margin-left: 0px;
+}
+
+#main-column .tx-donation-pi-donorlist .tx-pagebrowse-pi1 .tx-pagebrowse li {
+	background: none;
+	margin-left: 0px;
+}
+
+#main-column .tx-donation-pi-donorlist .tx-pagebrowse-pi1 .tx-pagebrowse li.tx-pagebrowse-pages ol li {
+	padding: 0px 2px;
+}
+
+#main-column .tx-donation-pi-donorlist .tx-pagebrowse-pi1 .tx-pagebrowse li.tx-pagebrowse-first {
+	padding-left: 0px;
+}
