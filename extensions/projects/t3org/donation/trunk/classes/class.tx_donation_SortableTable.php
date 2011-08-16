@@ -43,6 +43,7 @@ class tx_donation_SortableTable {
 	protected $sortingDirection;
 	protected $offset;
 	protected $rowLimit;
+	protected $conf;
 
 	/**
 	 * constructor for class tx_donation_SortableTable
@@ -67,6 +68,9 @@ class tx_donation_SortableTable {
 				}
 			}
 		}
+		
+		if(is_array($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_donation_pi_donorlist.']))
+			$this->conf = $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_donation_pi_donorlist.'];
 	}
 
 	public function setPrefix($prefix) {
@@ -211,13 +215,13 @@ class tx_donation_SortableTable {
 
 		if ($cell['field'] == $this->sortingField) {
 			$sortIndicator = $contentObject->IMAGE(array(
-				'file' => 'EXT:donation/resources/donorlist/arrow-asc.png'
+				'file' => $this->conf['iconPath'].'arrow-asc.png'
 			));
 
 			if ($this->sortingDirection == 'ASC') {
 				$sorting = 'DESC';
 				$sortIndicator = $contentObject->IMAGE(array(
-					'file' => 'EXT:donation/resources/donorlist/arrow-desc.png'
+					'file' => $this->conf['iconPath'].'arrow-desc.png'
 				));
 			}
 

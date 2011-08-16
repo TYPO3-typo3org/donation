@@ -28,6 +28,7 @@ plugin.tx_donation_pi_form {
 plugin.tx_donation_pi_donorlist {
 
 	templateFile = EXT:donation/resources/donorlist/template_donorlist.htm
+	iconPath = EXT:donation/resources/donorlist/
 	cssFile = EXT:donation/resources/donorlist/style_donorlist.css
 
 	recordsPerPage = 25
