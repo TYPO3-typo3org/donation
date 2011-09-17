@@ -59,11 +59,15 @@ class tx_donation_ShowBucketsCommand implements tx_donation_Command  {
 		$view = new $viewClass($this->configuration['templateFile'], 'select_account', $this->prefix);
 
 		$view->addLoop('accounts', $accounts);
+		$view->addLoop('accounts2', $accounts );
 		$view->addMarker('form_action', $this->plugin->pi_getPageLink($GLOBALS['TSFE']->id));
 		$view->addMarker('url_thanks', t3lib_div::getIndpEnv('TYPO3_SITE_URL') . $this->plugin->pi_getPageLink($this->configuration['thanksPid']));
 		$view->addMarker('url_cancel', t3lib_div::getIndpEnv('TYPO3_SITE_URL') . $this->plugin->pi_getPageLink($GLOBALS['TSFE']->id));
 		$view->addMarker('url_notify', t3lib_div::getIndpEnv('TYPO3_SITE_URL') . $this->plugin->pi_getPageLink($GLOBALS['TSFE']->id, '', array('tx_donation[cmd]' => 'ipnlog')));
+		$view->addVariable('account1', $accounts[0]);
+		$view->addVariable('account2', $accounts[1]);
 		$view->addVariable('paypal', $this->getPaypalData());
+		$view->addVariable('paypal2', $this->getPaypalData(true));
 		$view->addMarker('bankwire_action', $this->plugin->pi_getPageLink($GLOBALS['TSFE']->id));
 
 		$this->addJsToPage();
@@ -82,7 +86,6 @@ class tx_donation_ShowBucketsCommand implements tx_donation_Command  {
 
 	protected function addJsToPage() {
 		$siteRelPath = t3lib_extMgm::siteRelPath($this->plugin->extKey);
-
 		if ($this->configuration['loadJsFramework']) {
 			$prototype = $siteRelPath . 'resources/prototype/prototype.js';
 			$scriptaculous = $siteRelPath . 'resources/scriptaculous/scriptaculous.js?load=effects';
@@ -94,22 +97,23 @@ class tx_donation_ShowBucketsCommand implements tx_donation_Command  {
 			$GLOBALS['TSFE']->additionalHeaderData[$this->prefix] .=
 				'<script type="text/javascript" src="' . $prototype . '"></script>';
 			$GLOBALS['TSFE']->additionalHeaderData[$this->prefix] .=
-				'<script type="text/javascript" src="' . $scriptaculous . '"></script>';
+				'<script type="text/javascript" src="' . $scriptaculous . '"></script>';               
 		}
 
+		$jsFilePath = $this->configuration['jsFile'];
+		if(isset($jsFilePath)){
 		$GLOBALS['TSFE']->additionalHeaderData[$this->prefix] .=
-			'<script type="text/javascript" src="'
-			. $siteRelPath
-			. 'resources/form/pi_form.js"></script>';
+			'<script type="text/javascript" src="'.$jsFilePath.'"></script>';
+		}
 	}
 
 	/**
 	 * compiles an array of data used in the PayPal forms
 	 *
 	 */
-	protected function getPaypalData() {
+	protected function getPaypalData($withoutAccountId = false) {
 		$userId    = 0;
-		$accountId = 0;
+		$accountId = ($withoutAccountId) ? "" : 0;
 
 		if (is_array($GLOBALS['TSFE']->fe_user->user)) {
 			$userId = $GLOBALS['TSFE']->fe_user->user['uid'];

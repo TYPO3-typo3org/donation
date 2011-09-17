@@ -48,6 +48,7 @@ CREATE TABLE tx_donation_account (
 	name varchar(255) DEFAULT '' NOT NULL,
 	image text,
 	bank_account text,
+	description text,
 	email_notification varchar(255) DEFAULT '' NOT NULL,
 	email_paypal varchar(255) DEFAULT '' NOT NULL,
 
