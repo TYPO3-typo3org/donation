@@ -69,7 +69,15 @@ class tx_donation_ShowBucketsCommand implements tx_donation_Command  {
 		$view->addVariable('paypal', $this->getPaypalData());
 		$view->addVariable('paypal2', $this->getPaypalData(true));
 		$view->addMarker('bankwire_action', $this->plugin->pi_getPageLink($GLOBALS['TSFE']->id));
-
+		
+		$view->addMarker('bankwire_logo', $this->plugin->cObj->IMAGE($this->configuration['bankwireLogo.']));
+		$view->addMarker('paypal_logo', $this->plugin->cObj->IMAGE($this->configuration['paypalLogo.']));
+		$imageConf = $this->configuration['accountLogo.'];
+		$imageConf['file'] = $accounts[0]->getImagePath();
+		$view->addMarker('account1_logo', $this->plugin->cObj->IMAGE($imageConf));
+		$imageConf['file'] = $accounts[1]->getImagePath();
+		$view->addMarker('account2_logo', $this->plugin->cObj->IMAGE($imageConf));
+		
 		$this->addJsToPage();
 
 		return $view->render();
@@ -114,7 +122,7 @@ class tx_donation_ShowBucketsCommand implements tx_donation_Command  {
 	protected function getPaypalData($withoutAccountId = false) {
 		$userId    = 0;
 		$accountId = ($withoutAccountId) ? "" : 0;
-
+		
 		if (is_array($GLOBALS['TSFE']->fe_user->user)) {
 			$userId = $GLOBALS['TSFE']->fe_user->user['uid'];
 		}
@@ -123,7 +131,7 @@ class tx_donation_ShowBucketsCommand implements tx_donation_Command  {
 			'action'                 => $this->configuration['paypalUrl'],
 			'item_name'              => $this->configuration['paypalDonation.']['itemName'],
 			'item_name_subscription' => $this->configuration['paypalSubscription.']['itemName'],
-			'custom'                 => $accountId . '|' . $userId
+			'custom'                 => $accountId . '|' . $userId,	
 		);
 
 		return $paypalData;
