@@ -115,7 +115,6 @@ class tx_donation_HtmlTemplateView {
 		foreach ($this->loops as $key => $loopVariables) {
 			$this->renderLoop($key);
 		}
-
 			// process variables
 		foreach ($this->variables as $variableKey => $variable) {
 			$variableKey     = strtoupper($variableKey);

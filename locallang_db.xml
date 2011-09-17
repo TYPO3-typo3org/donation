@@ -32,6 +32,7 @@
 			<label index="tx_donation_account.bank_account">Bank Account</label>
 			<label index="tx_donation_account.email_notification">Notification E-Mail (separate multiple emails with comma)</label>
 			<label index="tx_donation_account.email_paypal">Paypal E-Mail</label>
+			<label index="tx_donation_account.description">Description</label>
 			<label index="tt_content.list_type_pi_form">Donations - Form</label>
 			<label index="tt_content.list_type_pi_donorlist">Donations - Donors List</label>
 		</languageKey>

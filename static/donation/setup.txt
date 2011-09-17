@@ -4,7 +4,7 @@ plugin.tx_donation_pi_form {
 
 	templateFile = EXT:donation/resources/form/template_form.htm
 	cssFile = EXT:donation/resources/form/style_form.css
-
+	jsFile = EXT:donation/resources/form/pi_form.js
 	loadJsFramework = 1
 	useJsFrameworkFromContrib = 0
 

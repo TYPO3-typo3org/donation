@@ -36,6 +36,7 @@ class tx_donation_Account {
 	protected $pid;
 	protected $name;
 	protected $image;
+	protected $description;
 	protected $bankAccount;
 	protected $emailNotification;
 	protected $emailPaypal;
@@ -73,6 +74,16 @@ class tx_donation_Account {
 
 	public function setImage($image) {
 		$this->image = $image;
+	}
+	
+	public function getDescription() {
+		return $this->description;
+	}
+
+	public function setDescription($description) {
+		if(strlen($description)<=0)
+		$description = "";
+		$this->description = $description;
 	}
 
 	public function getBankAccount() {

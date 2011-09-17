@@ -201,7 +201,7 @@ $TCA['tx_donation_donation'] = array (
 $TCA['tx_donation_account'] = array (
 	'ctrl' => $TCA['tx_donation_account']['ctrl'],
 	'interface' => array (
-		'showRecordFieldList' => 'hidden,name,image,bank_account,email_notification,email_paypal'
+		'showRecordFieldList' => 'hidden,name,image,description,bank_account,email_notification,email_paypal'
 	),
 	'feInterface' => $TCA['tx_donation_account']['feInterface'],
 	'columns' => array (
@@ -247,6 +247,16 @@ $TCA['tx_donation_account'] = array (
 				'rows' => '5',
 			)
 		),
+		'description' => array (
+			'exclude' => 0,
+			'label' => 'LLL:EXT:donation/locallang_db.xml:tx_donation_account.description',
+			'config' => array (
+				'type' => 'text',
+				'wrap' => 'OFF',
+				'cols' => '30',
+				'rows' => '5',
+			)
+		),
 		'email_notification' => array (
 			'exclude' => 0,
 			'label' => 'LLL:EXT:donation/locallang_db.xml:tx_donation_account.email_notification',
@@ -267,7 +277,7 @@ $TCA['tx_donation_account'] = array (
 		),
 	),
 	'types' => array (
-		'0' => array('showitem' => 'hidden;;;;1-1-1, name, image, bank_account, email_notification, email_paypal')
+		'0' => array('showitem' => 'hidden;;;;1-1-1, name, image,description, bank_account, email_notification, email_paypal')
 	),
 	'palettes' => array ()
 );

@@ -114,10 +114,10 @@ class tx_donation_AccountGateway {
 		$account->setPid($row['pid']);
 		$account->setName($row['name']);
 		$account->setImage($GLOBALS['TCA']['tx_donation_account']['columns']['image']['config']['uploadfolder'] . '/' . $row['image']);
+		$account->setDescription($row['description']);
 		$account->setBankAccount($row['bank_account']);
 		$account->setEmailNotification($row['email_notification']);
 		$account->setEmailPaypal($row['email_paypal']);
-
 		return $account;
 	}
 
