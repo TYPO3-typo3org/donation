@@ -71,7 +71,9 @@ class tx_donation_Account {
 	public function getImage() {
 		return '<img src="' . $this->image .'" alt="Donate through ' . $this->name . ' " />';
 	}
-
+	public function getImagePath(){
+	    return $this->image;
+	}
 	public function setImage($image) {
 		$this->image = $image;
 	}

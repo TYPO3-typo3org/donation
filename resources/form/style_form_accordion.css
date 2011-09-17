@@ -1,32 +1,12 @@
 
 
-.bucket-container .leftCol {float:left; width:70%;}
-.bucket-container .rightCol {float:left; padding-left: 15px;}
+.tx-donation-pi-form .leftCol {float:left; width:70%;}
+.tx-donation-pi-form .rightCol {float:left; padding-left: 15px;}
 
 .bucket-container .a-content {padding-bottom: 13px;overflow: hidden;}
-
+.bucket-container {clear: both;}
 
 /* ----- ----- buckets ----- ----- */
-
-#bucket-container {
-	border-top: 1px solid #ff8700;
-	padding: 0;
-	/*
-         float: left;
-         height: 215px;
-        */
-	width: 100%;
-	
-}
-
-#buckets {
-    /*
-	padding: 0px 5px;
-	position: relative;
-	background-color: #efefef; zoom: 1; position: relative;
-	border-bottom: 4px solid #ff8700;
-*/
-    }
 
 
 .donate-bucket p.donate-type {

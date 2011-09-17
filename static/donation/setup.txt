@@ -1,11 +1,9 @@
-
-
 plugin.tx_donation_pi_form {
-
-	templateFile = EXT:donation/resources/form/template_form.htm
-	cssFile = EXT:donation/resources/form/style_form.css
-	jsFile = EXT:donation/resources/form/pi_form.js
-	loadJsFramework = 1
+  
+	templateFile = EXT:donation/resources/form/template_form_accordion.htm
+	cssFile = EXT:donation/resources/form/style_form_accordion.css
+	jsFile >
+	loadJsFramework = 0
 	useJsFrameworkFromContrib = 0
 
 	paypalUrl = https://www.paypal.com/cgi-bin/webscr
@@ -21,6 +19,29 @@ plugin.tx_donation_pi_form {
 
 	paypalSubscription {
 		itemName = TYPO3 Recuring Donations
+	}
+	paypalLogo = IMAGE
+	paypalLogo {
+	    file  = EXT:donation/resources/form/images/paypal_logo.png
+	    file {
+	      width = 135
+	      height = 45
+	    }
+	}
+	bankwireLogo = IMAGE
+	bankwireLogo {
+	    file  = EXT:donation/resources/form/images/bankwire_logo.png
+	    file {	    
+		width = 135
+	        height = 45
+	    }	
+	}
+	accountLogo = IMAGE
+	accountLogo {
+	    file {
+		width = 135m
+		maxH = 150m
+	    }  
 	}
 }
 
