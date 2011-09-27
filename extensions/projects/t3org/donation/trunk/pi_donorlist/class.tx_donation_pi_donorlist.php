@@ -97,6 +97,7 @@ class tx_donation_pi_donorlist extends tslib_pibase {
 
 		$view->addMarker('pagebrowser', $this->getPageBrowser($table->getTotalRowCount()));
 
+		$view->loadViewHelper('DONATOR');
 		$view->loadViewHelper('LINK');
 		$view->loadViewHelper('WRAP');
 		$view->loadViewHelper('MONEY');
