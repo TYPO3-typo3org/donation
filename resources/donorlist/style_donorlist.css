@@ -31,23 +31,15 @@
 	empty-cells: show;
 }
 
-
-/* page browser */
-
-#main-column .tx-donation-pi-donorlist .tx-pagebrowse-pi1 .tx-pagebrowse {
-	text-align: left;
-	margin-left: 0px;
+.tx-donation-pi-donorlist .contenttable .s-external-link {
+	color:#000;
+	background:url(../../../t3org_template/i/i-externallink.png) right center no-repeat;
+	padding-right:17px;
+	
+	text-decoration:none;
 }
 
-#main-column .tx-donation-pi-donorlist .tx-pagebrowse-pi1 .tx-pagebrowse li {
-	background: none;
-	margin-left: 0px;
-}
-
-#main-column .tx-donation-pi-donorlist .tx-pagebrowse-pi1 .tx-pagebrowse li.tx-pagebrowse-pages ol li {
-	padding: 0px 2px;
-}
-
-#main-column .tx-donation-pi-donorlist .tx-pagebrowse-pi1 .tx-pagebrowse li.tx-pagebrowse-first {
-	padding-left: 0px;
+.tx-donation-pi-donorlist .contenttable .s-external-link:hover,
+.tx-donation-pi-donorlist .contenttable .s-external-link:focus {
+	text-decoration:underline;
 }
