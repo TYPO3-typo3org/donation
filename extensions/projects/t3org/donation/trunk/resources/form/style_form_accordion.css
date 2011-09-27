@@ -23,11 +23,11 @@
 .donate-bucket .donate-amount {
 	margin: 5px 0 0;
 	padding: 0;
+	float: left;
+	width: 156px;
 }
 
-.donate-bucket .donate-amount {
-	float: left;
-}
+
 
 
 
@@ -38,6 +38,7 @@
 	font-weight: bold;
 	height: 26px;
 	width: 67px;
+	float: right;
 }
 
 .donate-bucket.paypal .bucket-header {
@@ -92,7 +93,7 @@
 
 .tx-donation-pi-form .txt_inp {
     float:left;
-    width:60px;
+    width:62px;
 }
 
 .donate-amount .sbmt_inp {
