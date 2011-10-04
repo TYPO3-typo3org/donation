@@ -27,17 +27,9 @@
 	width: 156px;
 }
 
-
-
-
-
 .donate-bucket input.sbmt_inp {
-	background: transparent url(images/donate-submit.png) no-repeat 0px 1px;
-	border: none;
-	color: #fff;
-	font-weight: bold;
 	height: 26px;
-	width: 67px;
+	width: 68px;
 	float: right;
 }
 
@@ -94,6 +86,10 @@
 .tx-donation-pi-form .txt_inp {
     float:left;
     width:62px;
+	background: url("../i/i-text.png") repeat-x scroll left top #FFFFFF;
+    border: 1px solid #DBDBDB;
+   padding: 4px 0;
+   text-align:right;
 }
 
 .donate-amount .sbmt_inp {
