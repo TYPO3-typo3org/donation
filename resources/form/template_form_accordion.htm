@@ -292,70 +292,94 @@
 
 <!-- ###CONTACT_DATA_FORM_BWIRE### begin -->
 
-<form action="###FORM_ACTION###" method="post" id="contact-data-form" accept-charset="UTF-8">
+<form action="###FORM_ACTION###" class="b-form" method="post" id="contact-data-form" accept-charset="UTF-8">
 
 	<fieldset>
-		<legend>###LLL:legend.donation###</legend>
+		<h2>###LLL:legend.donation###</h2>
 
 		<ol>
-			<li>
+			<li class="b-form-row">
 				<label for="tx_donation_pi_form_currency">###LLL:currency### *</label>
+				<div class="b-form-inputs">
 				<select id="tx_donation_pi_form_currency" name="tx_donation[currency_code]">
 					<option value="EUR">Euro</option>
 					<option value="USD">US Dollar</option>
 				</select>
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="">###LLL:amount### *</label>
-				<input type="text" name="tx_donation[amount]" id="tx_donation_pi_form_amount" value="###AMOUNT###" />
+				<div class="b-form-inputs">
+				    <input type="text" name="tx_donation[amount]" id="tx_donation_pi_form_amount" value="###AMOUNT###" />
+				</div>
 			</li>
 		</ol>
 
 	</fieldset>
 
 	<fieldset>
-		<legend>###LLL:legend.contactDetails###</legend>
+		<h2>###LLL:legend.contactDetails###</h2>
 
 		<ol>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_name">###LLL:name###</label>
+				<div class="b-form-inputs">
 				<input type="text" name="tx_donation[name]" id="tx_donation_pi_form_name" value="###USER.NAME###" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_company">###LLL:company###</label>
+				<div class="b-form-inputs">
 				<input type="text" name="tx_donation[company]" id="tx_donation_pi_form_company" value="" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_addressStreet">###LLL:addressStreet###</label>
-				<input type="text" name="tx_donation[addressStreet]" id="tx_donation_pi_form_addressStreet" value="" />
+				<div class="b-form-inputs">
+				    <input type="text" name="tx_donation[addressStreet]" id="tx_donation_pi_form_addressStreet" value="" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_addressCity">###LLL:addressCity###</label>
+				<div class="b-form-inputs">
 				<input type="text" name="tx_donation[addressCity]" id="tx_donation_pi_form_addressCity" value="" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_addressZip">###LLL:addressZip###</label>
+				<div class="b-form-inputs">
 				<input type="text" name="tx_donation[addressZip]" id="tx_donation_pi_form_addressZip" value="" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_addressState">###LLL:addressState###</label>
+				<div class="b-form-inputs">
 				<input type="text" name="tx_donation[addressState]" id="tx_donation_pi_form_addressState" value="" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_addressCountry">###LLL:addressCountry###</label>
+				<div class="b-form-inputs">
 				<input type="text" name="tx_donation[addressCountry]" id="tx_donation_pi_form_addressCountry" value="" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_email">###LLL:email###</label>
+				<div class="b-form-inputs">
 				<input type="text" name="tx_donation[email]" id="tx_donation_pi_form_email" value="###USER.EMAIL###" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_url">###LLL:url###</label>
+				<div class="b-form-inputs">
 				<input type="text" name="tx_donation[url]" id="tx_donation_pi_form_url" value="###USER.URL###" />
+				</div>
 			</li>
-			<li class="csc-mailform-field">
+			<li class="csc-mailform-field b-form-row">
 				<label for="tx_donation_pi_form_comment">###LLL:comment###</label>
+				<div class="b-form-inputs">
 				<textarea wrap="off" rows="6" id="tx_donation_pi_form_comment" name="tx_donation[comment]"></textarea>
+				</div>
 			</li>
 		</ol>
 
@@ -365,8 +389,11 @@
 		<input type="hidden" name="tx_donation[account]" value="###ACCOUNT.UID###" />
 		<input type="hidden" name="tx_donation[user]"    value="###USER.UID###" />
 		<input type="hidden" name="tx_donation[cmd]"     value="bankaccountdetails" />
-
-		<input type="submit" class="csc-mailform-submit" value="###LLL:submit.bankwire###" />
+	<div class="b-form-row">
+		<div class="b-form-inputs">	
+		    <input type="submit" class="csc-mailform-submit bu" value="###LLL:submit.bankwire###" />
+		</div>
+	</div>
 	</fieldset>
 
 </form>
