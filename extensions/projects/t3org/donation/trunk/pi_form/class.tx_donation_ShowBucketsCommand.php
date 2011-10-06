@@ -109,10 +109,14 @@ class tx_donation_ShowBucketsCommand implements tx_donation_Command  {
 		}
 
 		$jsFilePath = $this->configuration['jsFile'];
-		if(isset($jsFilePath)){
+		$jsFilePath = str_replace('EXT:donation/', $siteRelPath, $jsFilePath);
 		$GLOBALS['TSFE']->additionalHeaderData[$this->prefix] .=
 			'<script type="text/javascript" src="'.$jsFilePath.'"></script>';
-		}
+	//	$pagerender = $GLOBALS['TSFE']->getPageRenderer();  
+	//	$this->plugin->cObj->pageRenderer->addJsFile($jsFilePath);
+	//	$pagerender->addJsFile($jsFilePath);
+		
+		
 	}
 
 	/**
