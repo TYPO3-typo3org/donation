@@ -29,55 +29,46 @@
            <div class="bucket-container">
                 <div class="accordion buckets" >
 
-                    <h5 class="a-h open"><span>Paypal - one-time Donation</span></h5>
+                    <h5 class="a-h open"><span>PayPal Donation</span></h5>
                         <div class="a-body donate-bucket paypal">
                             <div class="a-content">
                             <form class="paypal" action="###PAYPAL.ACTION###" method="post">
                                 <div class="leftCol">
-                                        <p>Please put in the amount you would like to donate as a one-time donation for the TYPO3 project</p>
-                                        
-                                        <div class="donate-amount">
-                                            <label>Amount</label><input type="text"  name="amount" value="" title="Please put in the amount you would like to donate as a one-time donation" class="txt_inp" maxlength="5" size="2" />
+                                        <p>Please put in the amount you would like to donate as a one-time donation or to setup it as monthly donation subscription for the TYPO3 project</p>
+					<div class="b-form-row">
+					     <label>One Time Donation</label>
+					    <div class="b-form-inputs">
+					     <input type="radio" name="donationtype" value="onetype"/> 
+					    </div>
+					</div>
+					<div class="b-form-row">
+					    <label>Monthly Donation</label>
+					    <div class="b-form-inputs">
+					    <input type="radio" name="donationtype" value="subscription" checked="yes" />
+					     </div>
+					</div>
+                                        <div class="donate-amount b-form-row">
+                                            <label>Amount</label>
+					    <div class="b-form-inputs">
+					    <input type="text"  name="amount" value="" title="Please put in the amount you would like to donate" class="txt_inp" maxlength="5" size="2" />
+					     &#8364;</div>
+					</div>
+					<div class="donate-amount b-form-row">
+					    <div class="b-form-inputs">
                                             <input type="submit" value="Donate" class="sbmt_inp bu" />
+					    </div>
                                         </div>
                                 </div>
                                 <div class="rightCol">
                                      ###PAYPAL_LOGO###
                                 </div>
-
-                                        <input type="hidden" name="currency_code" value="EUR" />
-                                        <input type="hidden" name="cmd"           value="_donations" />
-                                        <input type="hidden" name="business"      value="###ACCOUNT1.EMAIL_PAYPAL###"  />
-                                        <input type="hidden" name="item_name"     value="###PAYPAL.ITEM_NAME###" />
-                                        <input type="hidden" name="page_style"    value="Donations" />
-                                        <input type="hidden" name="no_shipping"   value="1" />
-                                        <input type="hidden" name="no_note"       value="0" />
-                                        <input type="hidden" name="return"        value="###URL_THANKS###" />
-                                        <input type="hidden" name="cancel_return" value="###URL_CANCEL###" />
-                                        <input type="hidden" name="notify_url"    value="###URL_NOTIFY###" />
-                                        <input type="hidden" name="tax"           value="0" />
-                                        <input type="hidden" name="lc"            value="US" />
-                                        <input type="hidden" name="bn"            value="PP-DonationsBF" />
-                                        <input type="hidden" name="custom"        value="###ACCOUNT1.UID######PAYPAL2.CUSTOM###" />
-                                </form>
-                                </div>
-                        </div>
-
-                        <h5 class="a-h"><span>Paypal - Monthly Donation</span></h5>
-                        <div class="a-body donate-bucket paypal paypal-subscription">
-                              <div class="a-content">
-                                <form class="paypal-subscription" action="###PAYPAL.ACTION###" method="post">
-                                       
-                                         <div class="leftCol">
-                                        <p>Please put in the amount you would like to setup as a monthly donation subscription for the TYPO3 project</p>
-                                        <div class="donate-amount">
-                                                 <label>Amount</label><input type="text"  name="a3" value="" title="Please put in the amount you would like to donate as a one-time donation" class="txt_inp" maxlength="5" size="2" />
-                                                <input type="submit" value="Donate" class="sbmt_inp bu" />
-                                        </div>
-                                        </div><div class="rightCol">
-                                            ###PAYPAL_LOGO### 
-                                        </div>
-                                        <input type="hidden" name="currency_code" value="EUR" />
+				<div class="additional">
+				        <input type="hidden" name="p3"            value="1" />
+                                        <input type="hidden" name="t3"            value="M" />
+                                        <input type="hidden" name="src"           value="1" />
+                                        <input type="hidden" name="sra"           value="1" />
+				</div>
+					<input type="hidden" name="currency_code" value="EUR" />
                                         <input type="hidden" name="cmd"           value="_xclick-subscriptions" />
                                         <input type="hidden" name="business"      value="###ACCOUNT1.EMAIL_PAYPAL###" />
                                         <input type="hidden" name="item_name"     value="###PAYPAL.ITEM_NAME_SUBSCRIPTION###" />
@@ -91,12 +82,9 @@
                                         <input type="hidden" name="lc"            value="US" />
                                         <input type="hidden" name="bn"            value="PP-SubscriptionsBF" />
                                         <input type="hidden" name="custom"        value="###ACCOUNT1.UID######PAYPAL2.CUSTOM###"  />
-                                        <input type="hidden" name="p3"            value="1" />
-                                        <input type="hidden" name="t3"            value="M" />
-                                        <input type="hidden" name="src"           value="1" />
-                                        <input type="hidden" name="sra"           value="1" />
+                                    
                                 </form>
-                        </div>
+                                </div>
                         </div>
 
                         <h5 class="a-h"><span>One-time Bank Wire Donation</span></h5>
@@ -105,10 +93,16 @@
                                 <form class="bankwire" action="###BANKWIRE_ACTION###" method="post">
                                      <div class="leftCol">
                                         <p>Please put in the amount you would like to donate as a one-time donation for the TYPO3 project</p>
-                                        
-                                        <div class="donate-amount">
-                                                 <label>Amount</label><input type="text"  name="tx_donation[amount]" value="" title="Please put in the amount you would like to donate as a one-time donation" class="txt_inp" maxlength="5" size="2" />
-                                                <input type="submit" value="Donate" class="sbmt_inp bu" />
+					<div class="donate-amount b-form-row">
+                                            <label>Amount</label>
+					    <div class="b-form-inputs">
+					    <input type="text"  name="tx_donation[amount]" value="" title="Please put in the amount you would like to donate" class="txt_inp" maxlength="5" size="2" />
+					     &#8364;</div>
+					</div>
+					<div class="donate-amount b-form-row">
+					    <div class="b-form-inputs">
+                                            <input type="submit" value="Donate" class="sbmt_inp bu" />
+					    </div>
                                         </div>
                                       </div>
                                      <div class="rightCol">
@@ -136,53 +130,47 @@
            <div class="bucket-container">
                 <div class="accordion buckets" >
 
-                    <h5 class="a-h open"><span>Paypal - one-time Donation</span></h5>
+                    <h5 class="a-h open"><span>PayPal Donation</span></h5>
                         <div class="a-body donate-bucket paypal">
                             <div class="a-content">
                             <form class="paypal" action="###PAYPAL.ACTION###" method="post">
                                     
-                                     <div class="leftCol">
-                                        <p>Please put in the amount you would like to donate as a one-time donation for the TYPO3 project</p>
-                                        <div class="donate-amount">
-                                                <label>Amount</label> <input type="text"  name="amount" value="" title="Please put in the amount you would like to donate as a one-time donation" class="txt_inp" maxlength="5" size="2" />
-                                                <input type="submit" value="Donate" class="sbmt_inp bu" />
-         </div>                               </div>
+                                    <div class="leftCol">
+                                        <p>Please put in the amount you would like to donate as a one-time donation or to setup it as monthly donation subscription for the TYPO3 project</p>
+					<div class="b-form-row">
+					     <label>One Time Donation</label>
+					    <div class="b-form-inputs">
+					     <input type="radio" name="donationtype" value="onetype"/> 
+					    </div>
+					</div>
+					<div class="b-form-row">
+					    <label>Monthly Donation</label>
+					    <div class="b-form-inputs">
+					    <input type="radio" name="donationtype" value="subscription" checked="yes" />
+					     </div>
+					</div>
+                                        <div class="donate-amount b-form-row">
+                                            <label>Amount</label>
+					    <div class="b-form-inputs">
+					    <input type="text"  name="amount" value="" title="Please put in the amount you would like to donate" class="txt_inp" maxlength="5" size="2" />
+					     &#8364;</div>
+					</div>
+					<div class="donate-amount b-form-row">
+					    <div class="b-form-inputs">
+                                            <input type="submit" value="Donate" class="sbmt_inp bu" />
+					    </div>
+                                        </div>
+                                </div>
  <div class="rightCol">
                                  ###PAYPAL_LOGO###
                                 </div>
+				<div class="additional">
+				        <input type="hidden" name="p3"            value="1" />
+                                        <input type="hidden" name="t3"            value="M" />
+                                        <input type="hidden" name="src"           value="1" />
+                                        <input type="hidden" name="sra"           value="1" />
+				</div>
 
-                                        <input type="hidden" name="currency_code" value="EUR" />
-                                        <input type="hidden" name="cmd"           value="_donations" />
-                                        <input type="hidden" name="business"      value="###ACCOUNT2.EMAIL_PAYPAL###"  />
-                                        <input type="hidden" name="item_name"     value="###PAYPAL.ITEM_NAME###" />
-                                        <input type="hidden" name="page_style"    value="Donations" />
-                                        <input type="hidden" name="no_shipping"   value="1" />
-                                        <input type="hidden" name="no_note"       value="0" />
-                                        <input type="hidden" name="return"        value="###URL_THANKS###" />
-                                        <input type="hidden" name="cancel_return" value="###URL_CANCEL###" />
-                                        <input type="hidden" name="notify_url"    value="###URL_NOTIFY###" />
-                                        <input type="hidden" name="tax"           value="0" />
-                                        <input type="hidden" name="lc"            value="US" />
-                                        <input type="hidden" name="bn"            value="PP-DonationsBF" />
-                                        <input type="hidden" name="custom"        value="###ACCOUNT2.UID######PAYPAL2.CUSTOM###"  />
-                                </form>
-                                </div>
-                        </div>
-
-                        <h5 class="a-h"><span>Paypal - Monthly Donation</span></h5>
-                        <div class="a-body donate-bucket paypal paypal-subscription">
-                              <div class="a-content">
-                                <form class="paypal-subscription" action="###PAYPAL.ACTION###" method="post">
-                                      <div class="leftCol">  
-                                      <p>Please put in the amount you would like to setup as a monthly donation subscription for the TYPO3 project</p>
-                                        <div class="donate-amount">
-                                               <label>Amount</label><input type="text"  name="a3" value="" title="Please put in the amount you would like to donate as a one-time donation" class="txt_inp" maxlength="5" size="2" />
-                                                <input type="submit" value="Donate" class="sbmt_inp bu" />
-                                        </div>
-                                       </div>
-                                        <div class="rightCol">
-                                           ###PAYPAL_LOGO###
-                                        </div>
                                         <input type="hidden" name="currency_code" value="EUR" />
                                         <input type="hidden" name="cmd"           value="_xclick-subscriptions" />
                                         <input type="hidden" name="business"      value="###ACCOUNT2.EMAIL_PAYPAL###"  />
@@ -197,12 +185,9 @@
                                         <input type="hidden" name="lc"            value="US" />
                                         <input type="hidden" name="bn"            value="PP-SubscriptionsBF" />
                                         <input type="hidden" name="custom"        value="###ACCOUNT2.UID######PAYPAL2.CUSTOM###"  />
-                                        <input type="hidden" name="p3"            value="1" />
-                                        <input type="hidden" name="t3"            value="M" />
-                                        <input type="hidden" name="src"           value="1" />
-                                        <input type="hidden" name="sra"           value="1" />
+					
                                 </form>
-                        </div>
+                                </div>
                         </div>
 
                         <h5 class="a-h"><span>One-time Bank Wire Donation</span></h5>
@@ -211,9 +196,16 @@
                                 <form class="bankwire" action="###BANKWIRE_ACTION###" method="post">
                                     <div class="leftCol">
                                         <p >Please put in the amount you would like to donate as a one-time donation for the TYPO3 project</p>
-                                        <div class="donate-amount">
-                                                <label>Amount</label><input type="text"  name="tx_donation[amount]" value="" title="Please put in the amount you would like to donate as a one-time donation" class="txt_inp" maxlength="5" size="2" />
-                                                <input type="submit" value="Donate" class="sbmt_inp bu" />
+                                       <div class="donate-amount b-form-row">
+                                            <label>Amount</label>
+					    <div class="b-form-inputs">
+					    <input type="text"  name="tx_donation[amount]" value="" title="Please put in the amount you would like to donate" class="txt_inp" maxlength="5" size="2" />
+					     &#8364;</div>
+					</div>
+					<div class="donate-amount b-form-row">
+					    <div class="b-form-inputs">
+                                            <input type="submit" value="Donate" class="sbmt_inp bu" />
+					    </div>
                                         </div>
                                          </div>
                                             <div class="rightCol">

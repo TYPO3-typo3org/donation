@@ -20,18 +20,6 @@
 	font-size: 10px;
 }
 
-.donate-bucket .donate-amount {
-	margin: 5px 0 0;
-	padding: 0;
-	float: left;
-	width: 156px;
-}
-
-.donate-bucket input.sbmt_inp {
-	height: 26px;
-	width: 68px;
-	float: right;
-}
 
 .donate-bucket.paypal .bucket-header {
 	height: 31px;
@@ -76,20 +64,12 @@
 
 .tx-donation-pi-form label {
 	font-weight: bold;
-        display:block;
-        width:90px;
-        float:left;
-        color:#000;
 }
 
 
-.tx-donation-pi-form .txt_inp {
-    float:left;
-    width:64px;
-	background: url("../i/i-text.png") repeat-x scroll left top #FFFFFF;
-    border: 1px solid #DBDBDB;
-   padding: 4px 0;
-   text-align:right;
+.tx-donation-pi-form .donate-amount .txt_inp {
+    width:51px;
+    text-align:right;
 }
 
 .donate-amount .sbmt_inp {
