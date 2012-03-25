@@ -54,13 +54,14 @@ class tx_donation_LogIpnCommand implements tx_donation_Command {
 		$this->parameters = t3lib_div::_POST();
 
 			// log parameters coming from PayPal
+		/*
 		t3lib_div::devLog(
 			'PayPal Request',
 			'donation',
 			0,
 			array('server' => $_SERVER, 'post' => t3lib_div::_POST())
 		);
-
+		*/
 		$this->logTransactionTypes = array('web_accept', 'subscr_payment');
 	}
 
