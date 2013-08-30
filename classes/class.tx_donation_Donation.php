@@ -1,26 +1,26 @@
 <?php
 /***************************************************************
-*  Copyright notice
-*
-*  (c) 2008 Ingo Renner <ingo@typo3.org>
-*  All rights reserved
-*
-*  This script is part of the TYPO3 project. The TYPO3 project is
-*  free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  The GNU General Public License can be found at
-*  http://www.gnu.org/copyleft/gpl.html.
-*
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+ *  Copyright notice
+ *
+ *  (c) 2008 Ingo Renner <ingo@typo3.org>
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
 
 
 class tx_donation_Donation {
@@ -62,12 +62,12 @@ class tx_donation_Donation {
 	public function save() {
 		$timestamp = time();
 
-			// also sets the tstamp field
+		// also sets the tstamp field
 
 		if (is_null($this->uid)) {
 
 			if ($this->amount > 0) {
-					// insert
+				// insert
 				$GLOBALS['TYPO3_DB']->exec_INSERTquery(
 					'tx_donation_donation',
 					array(
@@ -133,8 +133,8 @@ Comment: %s
 			$this->name,
 			$this->company,
 			$this->addressStreet
-				. chr(10) . $this->addressZip . ' ' . $this->addressCity
-				. chr(10) . $this->addressCountry . ' ' . $this->addressState,
+			. chr(10) . $this->addressZip . ' ' . $this->addressCity
+			. chr(10) . $this->addressCountry . ' ' . $this->addressState,
 			$this->email,
 			$this->url,
 			$this->amount . ' ' . $this->currency,
@@ -149,6 +149,21 @@ Comment: %s
 			'From: ' . $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_donation_pi_form.']['notificationSenderEmail']
 		);
 
+		$donaterMailText = 'Hello ' . $this->name . ',
+
+Thank you very much for your donation to the TYPO3 project. With your donation you foster it‘s ongoing development. We will use your donation wisely for the development efforts funded by the Association like various improvements to TYPO3 CMS, the development of TYPO3 Neos and TYPO3 Flow to name just a few. The usage of funds is decided upon by the members via the Expert Advisory Board. If you are not a member already you could also consider to become a member and support the TYPO3 project like this.
+
+<http://association.typo3.org/membership-levels/>
+
+With kind regards
+
+Alain Veuve (treasurer)';
+		t3lib_div::plainMailEncoded(
+			$this->email,
+			'Thank you for sponsoring TYPO3.org',
+			$donaterMailText,
+			'From: ' . $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_donation_pi_form.']['notificationSenderEmail']
+		);
 	}
 
 	public function getUid() {
@@ -332,5 +347,3 @@ Comment: %s
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/donation/classes/class.tx_donation_Donation.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/donation/classes/class.tx_donation_Donation.php']);
 }
-
-?>
