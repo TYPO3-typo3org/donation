@@ -1,26 +1,26 @@
 <?php
 /***************************************************************
-*  Copyright notice
-*
-*  (c) 2008 Ingo Renner <ingo@typo3.org>
-*  All rights reserved
-*
-*  This script is part of the TYPO3 project. The TYPO3 project is
-*  free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  The GNU General Public License can be found at
-*  http://www.gnu.org/copyleft/gpl.html.
-*
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+ *  Copyright notice
+ *
+ *  (c) 2008 Ingo Renner <ingo@typo3.org>
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
 
 require_once $GLOBALS['PATH_donation'] . 'interfaces/interface.tx_donation_Command.php';
 require_once $GLOBALS['PATH_donation'] . 'classes/class.tx_donation_AccountGateway.php';
@@ -58,21 +58,26 @@ class tx_donation_ShowBankAccountDetailsCommand implements tx_donation_Command {
 		$gateway = t3lib_div::makeInstance('tx_donation_AccountGateway');
 		$account = $gateway->findByUid((int) $this->parameters['account']);
 
-		$this->saveDonation($account);
+		try {
+			$this->saveDonation($account);
 
-		$viewClass = t3lib_div::makeInstanceClassName('tx_donation_HtmlTemplateView');
-		$view = new $viewClass($this->configuration['templateFile'], 'bank_account_details', $this->prefix);
-		$view->setViewHelperIncludePath($GLOBALS['PATH_donation'] . 'classes/viewHelpers/');
+			$viewClass = t3lib_div::makeInstanceClassName('tx_donation_HtmlTemplateView');
+			$view = new $viewClass($this->configuration['templateFile'], 'bank_account_details', $this->prefix);
+			$view->setViewHelperIncludePath($GLOBALS['PATH_donation'] . 'classes/viewHelpers/');
 
-		$view->loadViewHelper('LLL', array(
-			'languageFile' => $GLOBALS['PATH_donation'] . 'pi_form/locallang.xml',
-			'llKey'        => $this->plugin->LLkey
-		));
-		$view->loadViewHelper('NL2BR');
+			$view->loadViewHelper('LLL', array(
+				'languageFile' => $GLOBALS['PATH_donation'] . 'pi_form/locallang.xml',
+				'llKey'        => $this->plugin->LLkey
+			));
+			$view->loadViewHelper('NL2BR');
 
-		$view->addVariable('account', $account);
+			$view->addVariable('account', $account);
 
-		return $view->render();
+			return $view->render();
+		} catch (Exception $e ) {
+			return '<div class="typo3-messages"><div class="typo3-message message-error"><div class="message-header">' . $e->getMessage() . '</div><div class="message-body"></div></div></div>';
+		}
+
 	}
 
 	/**
@@ -84,8 +89,22 @@ class tx_donation_ShowBankAccountDetailsCommand implements tx_donation_Command {
 		$this->prefix = $prefix;
 	}
 
+	/**
+	 * @param $account
+	 * @throw Exception - should be catched in execute
+	 */
 	protected function saveDonation($account) {
 		$donation = t3lib_div::makeInstance('tx_donation_Donation');
+
+		$this->checkForSpam(
+		//fields not to be checked for urls
+			array(
+				'company',
+				'comment',
+				'email',
+				'url'
+			)
+		);
 
 		$donation->setPid($this->configuration['storagePid']);
 		$donation->setDate(time());
@@ -110,11 +129,26 @@ class tx_donation_ShowBankAccountDetailsCommand implements tx_donation_Command {
 
 		$donation->save();
 	}
+
+	protected function checkForSpam($whiteSpacedFields) {
+		foreach($this->parameters as $parameterName => $parameterContent) {
+			if(!in_array($parameterName, $whiteSpacedFields)) {
+				$matchedItems = preg_match(
+					'@((https?://)?([-\w]+\.[a-z]+)+\w(:\d+)?(/([-\w/_\.\,]*(\?\S+)?)?)*)@i',
+					$parameterContent
+				);
+				if($matchedItems == 1) {
+					throw new Exception('There was atleast one field, which contains a url, which should not contains an url. Please use the back button of your browser to change and resubmit the form.');
+				}
+				if(strpos($parameterContent, "\n")) {
+					throw new Exception('There was atleast one field, which contains a newline character, which is not possible to insert. Please use the back button of your browser to change and resubmit the form.');
+				}
+			}
+		}
+	}
 }
 
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/donation/pi_form/class.tx_donation_ShowBankAccountDetailsCommand.php'])	{
 	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/donation/pi_form/class.tx_donation_ShowBankAccountDetailsCommand.php']);
 }
-
-?>
