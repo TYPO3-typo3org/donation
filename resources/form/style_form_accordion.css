@@ -54,7 +54,7 @@
 	padding-left: 15px;
 }
 
-.tx-donation-pi-form ol {
+.tx-donation-pi-form ol li, .tx-donation-pi-form ol li.csc-mailform-field.b-form-row {
 	list-style: none;
 }
 
