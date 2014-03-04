@@ -67,7 +67,10 @@ class tx_donation_ShowBankwireFormCommand extends tx_donation_AbstractCommand {
 
 		$view->addMarker('form_action', $this->plugin->pi_getPageLink($GLOBALS['TSFE']->id));
 		$view->addMarker('amount', number_format((float) $this->parameters['amount'], 2));
-		$view->addMarker('honeypot_field', $this->getSpamProtectionService()->getHoneypotField());
+
+		$spamProtectionService = $this->getSpamProtectionService();
+		$view->addMarker('honeypot_field', $spamProtectionService->getHoneypotField());
+		$spamProtectionService->setSessionTime();
 
 		$view->addVariable('account', $account);
 		$view->addVariable('user', $this->getUserData());
