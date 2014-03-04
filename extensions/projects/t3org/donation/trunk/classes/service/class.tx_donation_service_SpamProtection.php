@@ -138,4 +138,14 @@ class tx_donation_service_SpamProtection implements t3lib_Singleton {
 
 		return $enabledMethods;
 	}
+
+	/**
+	 * Sets the session time if sessionCheck method is enabled in configuration.
+	 */
+	public function setSessionTime() {
+		if ($this->isEnabledSpamProtectionMethod('sessionCheck')) {
+			$sessionInstance = t3lib_div::makeInstance('tx_wtspamshield_method_session');
+			$sessionInstance->setSessionTime();
+		}
+	}
 } 
