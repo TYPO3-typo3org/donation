@@ -80,16 +80,12 @@ class tx_donation_Registry {
 	 * gets the value stored under the given key. returns null if no value is
 	 * available for the given key
 	 *
-	 * @param	string	the key to retrieve the value for
-	 * @return	mixed
+	 * @param  string $key       The key to retrieve the value for
+	 * @param  mixed  $default   Default value to return if $key is not set.
+	 * @return mixed
 	 */
-	public function get($key) {
-		$value = null;
-
-		if (isset($this->values[$key])) {
-			$value = $this->values[$key];
-		}
-
+	public function get($key, $default = null) {
+		$value = isset($this->values[$key]) ? $this->values[$key] : $default;
 		return $value;
 	}
 }

@@ -43,6 +43,20 @@ plugin.tx_donation_pi_form {
 		maxH = 150m
 	    }  
 	}
+
+	spamProtection {
+		# allowed no. of spam prtection methods that can fail
+		failureRate = 0
+
+		honeypotCheck = 1
+		honeypotCheck {
+			prefixInputName = tx_donation
+			honeypotInputName = misc
+		}
+
+		blacklistCheck = 1
+		sessionCheck = 1
+	}
 }
 
 

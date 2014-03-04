@@ -22,9 +22,9 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once $GLOBALS['PATH_donation'] . 'interfaces/interface.tx_donation_Command.php';
 require_once $GLOBALS['PATH_donation'] . 'classes/class.tx_donation_AccountGateway.php';
 require_once $GLOBALS['PATH_donation'] . 'classes/class.tx_donation_HtmlTemplateView.php';
+require_once $GLOBALS['PATH_donation'] . 'classes/service/class.tx_donation_service_SpamProtection.php';
 
 /**
  * class to show the form for collecting the donor's contact information
@@ -33,11 +33,10 @@ require_once $GLOBALS['PATH_donation'] . 'classes/class.tx_donation_HtmlTemplate
  * @package TYPO3
  * @subpackage donation
  */
-class tx_donation_ShowBankwireFormCommand implements tx_donation_Command {
+class tx_donation_ShowBankwireFormCommand extends tx_donation_AbstractCommand {
 
 	protected $prefix;
 	protected $plugin;
-	protected $configuration;
 	protected $parameters;
 
 	/**
@@ -46,19 +45,19 @@ class tx_donation_ShowBankwireFormCommand implements tx_donation_Command {
 	public function __construct($prefix = '') {
 		$this->prefix = $prefix;
 
-		$registry            = tx_donation_Registry::getInstance($prefix);
-		$this->configuration = $registry->get('configuration');
-		$this->plugin        = $registry->get('plugin');
-
+		$registry = tx_donation_Registry::getInstance($prefix);
+		$this->plugin = $registry->get('plugin');
 		$this->parameters = t3lib_div::_GP('tx_donation');
+
+		$this->setConfiguration($registry->get('configuration', array()));
 	}
 
 	public function execute() {
 		$gateway = t3lib_div::makeInstance('tx_donation_AccountGateway');
 		$account = $gateway->findByUid((int) $this->parameters['account']);
 
-		$viewClass = t3lib_div::makeInstanceClassName('tx_donation_HtmlTemplateView');
-		$view = new $viewClass($this->configuration['templateFile'], 'contact_data_form_bwire', $this->prefix);
+		/** @var tx_donation_HtmlTemplateView $view */
+		$view = t3lib_div::makeInstance('tx_donation_HtmlTemplateView', $this->configuration['templateFile'], 'contact_data_form_bwire', $this->prefix);
 		$view->setViewHelperIncludePath($GLOBALS['PATH_donation'] . 'classes/viewHelpers/');
 
 		$view->loadViewHelper('LLL', array(
@@ -68,6 +67,8 @@ class tx_donation_ShowBankwireFormCommand implements tx_donation_Command {
 
 		$view->addMarker('form_action', $this->plugin->pi_getPageLink($GLOBALS['TSFE']->id));
 		$view->addMarker('amount', number_format((float) $this->parameters['amount'], 2));
+		$view->addMarker('honeypot_field', $this->getSpamProtectionService()->getHoneypotField());
+
 		$view->addVariable('account', $account);
 		$view->addVariable('user', $this->getUserData());
 
@@ -77,12 +78,15 @@ class tx_donation_ShowBankwireFormCommand implements tx_donation_Command {
 	/**
 	 * sets a prefixto be used as a means of namespace destinctions
 	 *
-	 * @param	string	prefix for namespace destinctions
+	 * @param string $prefix for namespace distinction
 	 */
 	public function setPrefix($prefix) {
 		$this->prefix = $prefix;
 	}
 
+	/**
+	 * @return array
+	 */
 	protected function getUserData() {
 		$userData = array(
 			'uid'    => 0,
