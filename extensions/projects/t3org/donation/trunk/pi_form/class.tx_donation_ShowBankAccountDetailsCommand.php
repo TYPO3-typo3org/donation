@@ -22,7 +22,6 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-require_once $GLOBALS['PATH_donation'] . 'interfaces/interface.tx_donation_Command.php';
 require_once $GLOBALS['PATH_donation'] . 'classes/class.tx_donation_AccountGateway.php';
 require_once $GLOBALS['PATH_donation'] . 'classes/class.tx_donation_Donation.php';
 require_once $GLOBALS['PATH_donation'] . 'classes/class.tx_donation_HtmlTemplateView.php';
@@ -34,11 +33,10 @@ require_once $GLOBALS['PATH_donation'] . 'classes/class.tx_donation_HtmlTemplate
  * @package TYPO3
  * @subpackage donation
  */
-class tx_donation_ShowBankAccountDetailsCommand implements tx_donation_Command {
+class tx_donation_ShowBankAccountDetailsCommand extends tx_donation_AbstractCommand {
 
 	protected $prefix;
 	protected $plugin;
-	protected $configuration;
 	protected $parameters;
 
 	/**
@@ -47,11 +45,11 @@ class tx_donation_ShowBankAccountDetailsCommand implements tx_donation_Command {
 	public function __construct($prefix = '') {
 		$this->prefix = $prefix;
 
-		$registry            = tx_donation_Registry::getInstance($prefix);
-		$this->configuration = $registry->get('configuration');
-		$this->plugin        = $registry->get('plugin');
-
+		$registry = tx_donation_Registry::getInstance($prefix);
+		$this->plugin = $registry->get('plugin');
 		$this->parameters = t3lib_div::_GP('tx_donation');
+
+		$this->setConfiguration($registry->get('configuration', array()));
 	}
 
 	public function execute() {
@@ -61,8 +59,8 @@ class tx_donation_ShowBankAccountDetailsCommand implements tx_donation_Command {
 		try {
 			$this->saveDonation($account);
 
-			$viewClass = t3lib_div::makeInstanceClassName('tx_donation_HtmlTemplateView');
-			$view = new $viewClass($this->configuration['templateFile'], 'bank_account_details', $this->prefix);
+			/** @var tx_donation_HtmlTemplateView $view */
+			$view = t3lib_div::makeInstance('tx_donation_HtmlTemplateView', $this->configuration['templateFile'], 'bank_account_details', $this->prefix);
 			$view->setViewHelperIncludePath($GLOBALS['PATH_donation'] . 'classes/viewHelpers/');
 
 			$view->loadViewHelper('LLL', array(
@@ -138,12 +136,35 @@ class tx_donation_ShowBankAccountDetailsCommand implements tx_donation_Command {
 					$parameterContent
 				);
 				if($matchedItems == 1) {
-					throw new Exception('There was atleast one field, which contains a url, which should not contains an url. Please use the back button of your browser to change and resubmit the form.');
+					throw new Exception('There was at least one field, which contains a url, which should not contains an url. Please use the back button of your browser to change and resubmit the form.');
 				}
-				if(strpos($parameterContent, "\n")) {
-					throw new Exception('There was atleast one field, which contains a newline character, which is not possible to insert. Please use the back button of your browser to change and resubmit the form.');
+				if(strpos($parameterContent, "\n") || strpos($parameterContent, "\r")) {
+					throw new Exception('There was at least one field, which contains a newline character, which is not possible to insert. Please use the back button of your browser to change and resubmit the form.');
 				}
 			}
+		}
+
+		$this->performAdditionalSpamChecks();
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	protected function performAdditionalSpamChecks() {
+		$spamProtectionService = $this->getSpamProtectionService();
+		$enabledSpamCheckMethods = $spamProtectionService->getEnabledMethods();
+
+		/** @var tx_wtspamshield_processor $processor */
+		$processor = $spamProtectionService->getProcessor();
+		$processor->fieldValues = $this->parameters;
+		$processor->additionalValues = $spamProtectionService->getMethodConfiguration();
+		$processor->failureRate = (int) $spamProtectionService->getMethodConfiguration('failureRate');
+		$processor->methodes = $enabledSpamCheckMethods;
+
+		$error = $processor->validate();
+
+		if (strlen($error)) {
+			throw new Exception($error);
 		}
 	}
 }
