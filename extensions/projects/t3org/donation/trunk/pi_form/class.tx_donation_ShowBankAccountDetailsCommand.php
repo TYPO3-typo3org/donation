@@ -158,7 +158,7 @@ class tx_donation_ShowBankAccountDetailsCommand extends tx_donation_AbstractComm
 		$processor = $spamProtectionService->getProcessor();
 		$processor->fieldValues = $this->parameters;
 		$processor->additionalValues = $spamProtectionService->getMethodConfiguration();
-		$processor->failureRate = (int) $spamProtectionService->getMethodConfiguration('failureRate');
+		$processor->failureRate = (int) $spamProtectionService->getConfiguration('failureRate');
 		$processor->methodes = $enabledSpamCheckMethods;
 
 		$error = $processor->validate();
