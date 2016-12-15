@@ -151,7 +151,7 @@ Comment: %s
 
 		$donaterMailText = 'Hello ' . $this->name . ',
 
-Thank you very much for your donation to the TYPO3 project. With your donation you foster it‘s ongoing development. We will use your donation wisely for the development efforts funded by the Association like various improvements to TYPO3 CMS, the development of TYPO3 Neos and TYPO3 Flow to name just a few. The usage of funds is decided upon by the members via the Expert Advisory Board. If you are not a member already you could also consider to become a member and support the TYPO3 project like this.
+Thank you very much for your donation to the TYPO3 project. With your donation you foster it‘s ongoing development. We will use your donation wisely for the development efforts funded by the Association like various improvements to TYPO3 CMS, Community Events and TYPO3 Education to name just a few. The usage of funds is decided upon by the members via the Expert Advisory Board. If you are not a member already you could also consider to become a member and support the TYPO3 project like this.
 
 <http://association.typo3.org/membership-levels/>
 
